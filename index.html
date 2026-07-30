@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aeral — Limpieza de fachadas con drones en CDMX | Sin andamios, sin riesgo humano</title>
+<meta name="description" content="Aeral limpia fachadas de gran altura con drones industriales alimentados desde tierra: hasta 800 m² por hora, sin andamios ni cuerdas, con mínima interrupción para los ocupantes. Solicite una cotización.">
+<meta name="keywords" content="limpieza de fachadas con drones, limpieza de fachadas CDMX, limpieza de vidrios en altura, drones industriales, facility management, limpieza de edificios corporativos, limpieza sin andamios">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://aeral.mx/">
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Aeral">
+<meta property="og:title" content="Aeral — Limpieza de fachadas con drones">
+<meta property="og:description" content="Fachadas limpias sin andamios, sin cuerdas y sin riesgo humano. Hasta 800 m² por hora con drones industriales alimentados desde tierra.">
+<meta property="og:url" content="https://aeral.mx/">
+<meta property="og:locale" content="es_MX">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Aeral — Limpieza de fachadas con drones">
+<meta name="twitter:description" content="Fachadas limpias sin andamios, sin cuerdas y sin riesgo humano. Hasta 800 m²/h.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --ink:#06272e;          /* petróleo profundo — texto y superficies oscuras */
+  --ink-soft:#0c3a43;
+  --teal:#0e8c94;         /* acento Aeral */
+  --teal-dark:#0a6e75;
+  --teal-tint:#eaf5f5;
+  --bg:#f7fafa;
+  --surface:#ffffff;
+  --muted:#5b6d71;
+  --line:#e2ebec;
+  --radius:16px;
+  --shadow-sm:0 1px 2px rgba(6,39,46,.05),0 4px 14px rgba(6,39,46,.05);
+  --shadow-md:0 6px 28px rgba(6,39,46,.10);
+  --font-display:'Space Grotesk',system-ui,sans-serif;
+  --font-body:'Inter',system-ui,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+body{font-family:var(--font-body);color:var(--ink);background:var(--bg);line-height:1.65;font-size:16.5px;-webkit-font-smoothing:antialiased}
+img,svg{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.container{max-width:1180px;margin:0 auto;padding:0 24px}
+.section{padding:104px 0}
+.section.alt{background:var(--surface)}
+.eyebrow{font-family:var(--font-display);font-size:.78rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.eyebrow::before{content:"";width:28px;height:2px;background:var(--teal);border-radius:2px}
+h1,h2,h3{font-family:var(--font-display);letter-spacing:-.02em;line-height:1.12}
+h2{font-size:clamp(1.85rem,3.4vw,2.7rem);font-weight:600;max-width:720px}
+.lead{color:var(--muted);max-width:640px;margin-top:18px;font-size:1.06rem}
+.section-head{margin-bottom:56px}
+:focus-visible{outline:3px solid var(--teal);outline-offset:3px;border-radius:6px}
+
+/* ============ BOTONES ============ */
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:600;font-size:.98rem;padding:15px 28px;border-radius:12px;border:1.5px solid transparent;cursor:pointer;transition:all .25s ease;letter-spacing:.01em}
+.btn-primary{background:var(--ink);color:#fff}
+.btn-primary:hover{background:var(--teal-dark);transform:translateY(-2px);box-shadow:var(--shadow-md)}
+.btn-ghost{border-color:var(--line);color:var(--ink);background:transparent}
+.btn-ghost:hover{border-color:var(--teal);color:var(--teal-dark)}
+.btn svg{width:17px;height:17px}
+
+/* ============ NAV ============ */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;transition:all .3s ease;padding:18px 0}
+.nav.scrolled{background:rgba(255,255,255,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:12px 0}
+.nav-inner{display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center}
+.logo img{height:40px;width:auto;display:block}
+.hero-photo{position:relative;border-radius:20px;overflow:hidden;box-shadow:var(--shadow-md)}
+.hero-photo img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
+.hero-chip{position:absolute;bottom:18px;left:18px;background:rgba(255,255,255,.8);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.65);border-radius:12px;padding:11px 18px;font-family:var(--font-display);box-shadow:var(--shadow-sm)}
+.hero-chip strong{font-size:1.15rem;display:block;line-height:1.2}
+.hero-chip span{font-size:.78rem;color:var(--muted)}
+.nav-links{display:flex;gap:32px;align-items:center;list-style:none}
+.nav-links a{font-size:.92rem;font-weight:500;color:var(--ink-soft);transition:color .2s}
+.nav-links a:hover{color:var(--teal-dark)}
+.nav-links a.btn-primary{color:#fff}
+.nav-links a.btn-primary:hover{color:#fff}
+.nav .btn{padding:11px 20px;font-size:.9rem}
+.nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:8px}
+.nav-toggle svg{width:26px;height:26px;stroke:var(--ink)}
+
+/* ============ HERO ============ */
+.hero{padding:180px 0 90px;position:relative;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.hero h1{font-size:clamp(2.5rem,5vw,3.9rem);font-weight:700}
+.hero h1 .accent{color:var(--teal)}
+.hero .lead{font-size:1.13rem;margin-top:22px}
+.hero-ctas{display:flex;gap:14px;margin-top:36px;flex-wrap:wrap}
+.hero-visual{position:relative}
+.hero-visual svg{width:100%;height:auto}
+.trust-strip{margin-top:76px;display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.trust-chip{background:rgba(255,255,255,.65);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--line);border-radius:14px;padding:20px 22px;box-shadow:var(--shadow-sm)}
+.trust-chip strong{font-family:var(--font-display);font-size:1.45rem;font-weight:700;display:block;letter-spacing:-.01em}
+.trust-chip span{font-size:.85rem;color:var(--muted);line-height:1.45;display:block;margin-top:4px}
+
+/* animaciones del esquema */
+@keyframes floatDrone{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+@keyframes flow{to{stroke-dashoffset:-40}}
+@keyframes spray{0%,100%{opacity:.25}50%{opacity:.85}}
+.drone-group{animation:floatDrone 4.5s ease-in-out infinite}
+.tether-flow{stroke-dasharray:6 14;animation:flow 1.6s linear infinite}
+.spray-line{animation:spray 2.4s ease-in-out infinite}
+
+/* ============ POR QUÉ ============ */
+.versus{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:12px}
+.versus-card{border-radius:var(--radius);padding:36px;border:1px solid var(--line)}
+.versus-card.old{background:var(--surface)}
+.versus-card.new{background:var(--ink);color:#fff;border-color:var(--ink)}
+.versus-card h3{font-size:1.15rem;margin-bottom:22px;display:flex;align-items:center;gap:10px}
+.versus-card.new h3{color:#fff}
+.versus-card ul{list-style:none;display:grid;gap:14px}
+.versus-card li{display:flex;gap:12px;align-items:flex-start;font-size:.96rem}
+.versus-card.old li{color:var(--muted)}
+.versus-card.new li{color:rgba(255,255,255,.88)}
+.versus-card li svg{width:19px;height:19px;flex:none;margin-top:3px}
+.tag{display:inline-block;font-family:var(--font-display);font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:5px 12px;border-radius:99px}
+.tag.gray{background:var(--bg);color:var(--muted);border:1px solid var(--line)}
+.tag.teal{background:var(--teal);color:#fff}
+
+/* ============ CÓMO FUNCIONA ============ */
+.how-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:center}
+.steps{display:grid;gap:8px;counter-reset:step}
+.step{display:flex;gap:22px;padding:22px 0;border-bottom:1px solid var(--line)}
+.step:last-child{border-bottom:none}
+.step-num{font-family:var(--font-display);font-weight:700;font-size:.95rem;color:var(--teal);width:44px;height:44px;flex:none;border:1.5px solid var(--teal);border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--surface)}
+.step h3{font-size:1.06rem;margin-bottom:6px}
+.step p{color:var(--muted);font-size:.95rem}
+.how-visual svg{width:100%;height:auto}
+
+/* ============ BENEFICIOS ============ */
+.benefits-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.benefit{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:30px 26px;transition:all .3s ease}
+.benefit:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);border-color:transparent}
+.benefit-icon{width:48px;height:48px;border-radius:12px;background:var(--teal-tint);display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+.benefit-icon svg{width:24px;height:24px;stroke:var(--teal-dark)}
+.benefit h3{font-size:1.02rem;margin-bottom:8px}
+.benefit p{font-size:.9rem;color:var(--muted)}
+.benefit.wide{grid-column:1/-1;display:flex;gap:22px;align-items:flex-start}
+.benefit.wide .benefit-icon{margin-bottom:0;flex:none}
+.benefit.wide p{max-width:820px}
+
+/* ============ COMPARACIÓN ============ */
+.compare-wrap{overflow-x:auto;border-radius:var(--radius);border:1px solid var(--line);background:var(--surface);box-shadow:var(--shadow-sm)}
+table.compare{width:100%;border-collapse:collapse;min-width:640px}
+.compare th,.compare td{padding:18px 26px;text-align:left;font-size:.96rem}
+.compare thead th{font-family:var(--font-display);font-size:.85rem;letter-spacing:.06em;text-transform:uppercase;border-bottom:1px solid var(--line);color:var(--muted)}
+.compare thead th.col-aeral{color:#fff;background:var(--ink);border-radius:0}
+.compare tbody tr{border-bottom:1px solid var(--line)}
+.compare tbody tr:last-child{border-bottom:none}
+.compare td.metric{font-weight:600;font-family:var(--font-display);font-size:.92rem;width:22%}
+.compare td.old-val{color:var(--muted)}
+.compare td.col-aeral{background:var(--teal-tint);font-weight:500;border-left:3px solid var(--teal)}
+
+/* ============ TECNOLOGÍA ============ */
+.tech-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.tech-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:32px}
+.tech-card .spec{font-family:var(--font-display);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);margin-bottom:12px;font-weight:600}
+.tech-card h3{font-size:1.1rem;margin-bottom:10px}
+.tech-card p{font-size:.92rem;color:var(--muted)}
+
+/* ============ INDUSTRIAS ============ */
+.industries-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.industry{position:relative;border-radius:var(--radius);border:1px solid var(--line);background:var(--surface);padding:30px 24px;transition:all .3s ease;overflow:hidden}
+.industry:hover{border-color:var(--teal);transform:translateY(-3px);box-shadow:var(--shadow-md)}
+.industry svg{width:26px;height:26px;stroke:var(--teal-dark);margin-bottom:16px}
+.industry h3{font-size:1rem;margin-bottom:6px}
+.industry p{font-size:.86rem;color:var(--muted)}
+
+/* ============ PROCESO ============ */
+.timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;margin-top:20px}
+.timeline::before{content:"";position:absolute;top:22px;left:6%;right:6%;height:2px;background:var(--line)}
+.tl-item{position:relative;padding:0 16px;text-align:left}
+.tl-dot{width:44px;height:44px;border-radius:50%;background:var(--surface);border:2px solid var(--teal);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:700;color:var(--teal);position:relative;z-index:1;margin-bottom:18px;font-size:.9rem}
+.tl-item h3{font-size:.98rem;margin-bottom:6px}
+.tl-item p{font-size:.86rem;color:var(--muted)}
+
+/* ============ GALERÍA ============ */
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.media{position:relative;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow-sm);background:#041d22}
+.media img,.media video{width:100%;height:100%;object-fit:cover;display:block}
+.media.wide{grid-column:span 3;aspect-ratio:21/9}
+.media.two{grid-column:span 2;height:380px}
+.media.one{height:380px}
+.media .cap{position:absolute;left:0;right:0;bottom:0;padding:44px 20px 16px;background:linear-gradient(transparent,rgba(4,29,34,.8));color:#fff;font-size:.86rem;font-family:var(--font-display);font-weight:500;letter-spacing:.02em}
+
+/* ============ SUSTENTABILIDAD ============ */
+.sust{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;background:var(--ink);border-radius:24px;padding:64px;color:#fff}
+.sust h2{color:#fff}
+.sust p{color:rgba(255,255,255,.78)}
+.sust ul{list-style:none;display:grid;gap:16px;margin-top:26px}
+.sust li{display:flex;gap:13px;align-items:flex-start;color:rgba(255,255,255,.88);font-size:.97rem}
+.sust li svg{width:20px;height:20px;flex:none;stroke:var(--teal);margin-top:3px}
+
+/* ============ FAQ ============ */
+.faq-list{max-width:820px}
+.faq-item{border-bottom:1px solid var(--line)}
+.faq-item summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:24px 4px;font-family:var(--font-display);font-weight:600;font-size:1.04rem}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary .plus{width:30px;height:30px;flex:none;border-radius:50%;border:1.5px solid var(--line);display:flex;align-items:center;justify-content:center;transition:all .3s;font-weight:500;color:var(--teal-dark)}
+.faq-item[open] summary .plus{transform:rotate(45deg);background:var(--teal);color:#fff;border-color:var(--teal)}
+.faq-item .answer{padding:0 4px 26px;color:var(--muted);max-width:700px;font-size:.97rem}
+
+/* ============ CTA / FORM ============ */
+.cta-final{background:var(--ink);color:#fff}
+.cta-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:72px;align-items:start}
+.cta-final h2{color:#fff}
+.cta-final .lead{color:rgba(255,255,255,.75)}
+.cta-contacts{margin-top:36px;display:grid;gap:14px}
+.contact-line{display:flex;align-items:center;gap:14px;padding:16px 20px;border:1px solid rgba(255,255,255,.14);border-radius:12px;background:rgba(255,255,255,.05);backdrop-filter:blur(8px);transition:all .25s;font-size:.95rem}
+.contact-line:hover{border-color:var(--teal);background:rgba(14,140,148,.12)}
+.contact-line svg{width:20px;height:20px;stroke:var(--teal);flex:none}
+.form-card{background:var(--surface);border-radius:20px;padding:42px;color:var(--ink);box-shadow:0 24px 60px rgba(0,0,0,.35)}
+.form-card h3{font-size:1.25rem;margin-bottom:6px}
+.form-card .hint{font-size:.88rem;color:var(--muted);margin-bottom:26px}
+.field{margin-bottom:18px}
+.field label{display:block;font-size:.85rem;font-weight:600;margin-bottom:7px;font-family:var(--font-display)}
+.field input,.field select,.field textarea{width:100%;padding:13px 16px;border:1.5px solid var(--line);border-radius:10px;font-family:var(--font-body);font-size:.95rem;color:var(--ink);background:var(--bg);transition:border-color .2s}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--teal)}
+.field textarea{resize:vertical;min-height:100px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.form-note{font-size:.8rem;color:var(--muted);margin-top:14px}
+
+/* ============ FOOTER ============ */
+.footer{background:#041d22;color:rgba(255,255,255,.7);padding:64px 0 36px;font-size:.92rem}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.footer .logo{color:#fff;margin-bottom:16px}
+.footer h4{font-family:var(--font-display);color:#fff;font-size:.88rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:18px}
+.footer ul{list-style:none;display:grid;gap:11px}
+.footer a:hover{color:var(--teal)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:28px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.84rem;color:rgba(255,255,255,.45)}
+
+/* ============ REVEAL ============ */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .75s cubic-bezier(.16,1,.3,1),transform .75s cubic-bezier(.16,1,.3,1)}
+.reveal.visible{opacity:1;transform:none}
+.reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}
+@media (prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+  .drone-group,.tether-flow,.spray-line{animation:none}
+  html{scroll-behavior:auto}
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width:1024px){
+  .benefits-grid,.industries-grid{grid-template-columns:repeat(2,1fr)}
+  .tech-grid{grid-template-columns:1fr 1fr}
+  .timeline{grid-template-columns:repeat(2,1fr);gap:32px}
+  .timeline::before{display:none}
+  .trust-strip{grid-template-columns:1fr}
+}
+@media (max-width:860px){
+  .section{padding:72px 0}
+  .hero{padding:140px 0 64px}
+  .hero-grid,.how-grid,.versus,.cta-grid,.sust{grid-template-columns:1fr}
+  .sust{padding:44px 28px}
+  .gallery-grid{grid-template-columns:1fr}
+  .media.wide,.media.two{grid-column:span 1}
+  .media.wide{aspect-ratio:16/9}
+  .media.two,.media.one{height:260px}
+  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(255,255,255,.97);backdrop-filter:blur(14px);flex-direction:column;padding:24px;gap:20px;border-bottom:1px solid var(--line)}
+  .nav-links.open{display:flex}
+  .nav-toggle{display:block}
+  .footer-grid{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+}
+@media (max-width:560px){
+  .benefits-grid,.industries-grid,.tech-grid,.timeline{grid-template-columns:1fr}
+  .form-card{padding:30px 22px}
+}
+</style>
+</head>
+<body>
+<!-- ============ NAV ============ -->
+<nav class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="#" class="logo" aria-label="Aeral — inicio">
+      <img src="assets/logo_dark.png" alt="Aeral">
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#por-que">Por qué Aeral</a></li>
+      <li><a href="#beneficios">Beneficios</a></li>
+      <li><a href="#industrias">Industrias</a></li>
+      <li><a href="#galeria">Galería</a></li>
+      <li><a href="#faq">Preguntas frecuentes</a></li>
+      <li><a href="#contacto" class="btn btn-primary">Solicitar cotización</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <p class="eyebrow reveal">Limpieza de fachadas con drones</p>
+        <h1 class="reveal d1">Fachadas limpias.<br>Cero personas <span class="accent">colgando en altura.</span></h1>
+        <p class="lead reveal d2">Aeral limpia fachadas de gran altura con un dron industrial alimentado desde tierra: hasta 800 m² por hora, sin andamios ni columpios, y con mínima interrupción para los ocupantes del edificio.</p>
+        <div class="hero-ctas reveal d3">
+          <a href="#contacto" class="btn btn-primary">Solicitar cotización
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a href="#por-que" class="btn btn-ghost">Conocer más</a>
+        </div>
+      </div>
+      <div class="hero-visual reveal d2">
+        <div class="hero-photo">
+          <img src="assets/dron2.jpg" alt="Dron industrial de Aeral limpiando la fachada de cristal de un edificio, conectado por manguera a la bomba en tierra" fetchpriority="high">
+          <div class="hero-chip"><strong>800 m²/h</strong><span>Limpieza continua desde tierra</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="trust-strip">
+      <div class="trust-chip reveal"><strong>800 m²/h</strong><span>Velocidad de limpieza del sistema</span></div>
+      <div class="trust-chip reveal d1"><strong>0</strong><span>Personas suspendidas en altura</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ POR QUÉ AERAL ============ -->
+<section class="section alt" id="por-que">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow">Por qué Aeral</p>
+      <h2>El método tradicional resolvió un problema de otra época</h2>
+      <p class="lead">Durante décadas, limpiar una fachada significó suspender personas a decenas de metros del suelo. Hoy el trabajo en altura puede hacerlo la máquina — con mayor velocidad, menor costo y riesgo humano cero.</p>
+    </div>
+    <div class="versus">
+      <div class="versus-card old reveal">
+        <h3><span class="tag gray">Antes</span> Andamios, cuerdas y columpios</h3>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#b0292f" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>Personas trabajando suspendidas en altura</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#b0292f" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>Días o semanas de montaje y desmontaje de estructuras</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#b0292f" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>Renta de andamiaje y maniobras que encarecen el proyecto</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#b0292f" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>Accesos bloqueados e interrupción para los ocupantes</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#b0292f" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>Avance limitado por la fatiga y las condiciones del personal</li>
+        </ul>
+      </div>
+      <div class="versus-card new reveal d1">
+        <h3><span class="tag teal">Hoy</span> El sistema Aeral</h3>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#0e8c94" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>El operador permanece en tierra en todo momento</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#0e8c94" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Instalación del equipo en horas, no en semanas</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#0e8c94" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Hasta 800 m² por hora de limpieza continua</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#0e8c94" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>El edificio sigue operando con normalidad</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#0e8c94" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Suministro de agua constante desde tierra: sin recargas, sin pausas</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BENEFICIOS ============ -->
+<section class="section alt" id="beneficios">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow">Beneficios</p>
+      <h2>Lo que cambia cuando el trabajo en altura lo hace la máquina</h2>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit reveal"><div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3>Riesgo humano cero</h3><p>Nadie trabaja suspendido. Un piloto certificado controla todo desde tierra, con seguro de responsabilidad civil.</p></div>
+      <div class="benefit reveal d1"><div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg></div><h3>Días, no semanas</h3><p>Hasta 800 m² por hora con suministro continuo de agua desde tierra: sin recargas ni pausas.</p></div>
+      <div class="benefit reveal d2"><div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><h3>Menor costo total</h3><p>Sin renta de andamiaje, sin días de montaje y desmontaje, y menos jornadas de personal en sitio.</p></div>
+      <div class="benefit reveal d3"><div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-4h6v4"/></svg></div><h3>El edificio no se detiene</h3><p>Accesos libres y operación normal para ocupantes y visitantes durante toda la limpieza.</p></div>
+      <div class="benefit wide reveal"><div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 10 8 10 8a18.5 18.5 0 0 1-2.16 3.19M6.61 6.61A13.53 13.53 0 0 0 2 12s3 8 10 8a9.74 9.74 0 0 0 5.39-1.61M2 2l20 20M9.88 9.88a3 3 0 1 0 4.24 4.24"/></svg></div><div><h3>Privacidad para los ocupantes</h3><p>El dron de limpieza opera sin cámaras de grabación: no captura imágenes ni video del interior del inmueble. A diferencia del personal suspendido frente a las ventanas, la limpieza se realiza sin presencia ajena en la fachada, lo que resulta más cómodo y respetuoso para inquilinos y colaboradores.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INDUSTRIAS ============ -->
+<section class="section" id="industrias">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow">Industrias</p>
+      <h2>Diseñado para inmuebles que no pueden detenerse</h2>
+      <p class="lead">También atendemos hospitales, parques industriales y proyectos de facility management.</p>
+    </div>
+    <div class="industries-grid">
+      <div class="industry reveal"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M6 21V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v17M9 7h1M14 7h1M9 11h1M14 11h1M9 15h1M14 15h1"/></svg><h3>Torres y corporativos</h3><p>Fachadas de cristal de gran altura sin interrumpir la jornada laboral.</p></div>
+      <div class="industry reveal d1"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-4h6v4M10 12h4"/></svg><h3>Hoteles</h3><p>Imagen impecable sin andamios frente a la entrada ni ruido para los huéspedes.</p></div>
+      <div class="industry reveal d2"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-6 9 6M4 10v11h16V10M9 21v-7h6v7M2 21h20"/></svg><h3>Centros comerciales</h3><p>Grandes superficies limpias fuera de horario, sin cerrar accesos al público.</p></div>
+      <div class="industry reveal d3"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M6 21V6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v15M10 8h4M10 12h4M10 16h4"/></svg><h3>Condominios</h3><p>Propuestas claras para comités y asambleas, con costos predecibles.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCESO ============ -->
+<section class="section alt" id="proceso">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow">Nuestro proceso</p>
+      <h2>De la primera llamada a la fachada limpia</h2>
+    </div>
+    <div class="timeline">
+      <div class="tl-item reveal"><div class="tl-dot">01</div><h3>Visita técnica</h3><p>Evaluamos material, altura, accesos y estado de la fachada. Sin costo.</p></div>
+      <div class="tl-item reveal d1"><div class="tl-dot">02</div><h3>Propuesta cerrada</h3><p>Cotización por m² con alcance, tiempos, plan de seguridad y permisos gestionados por Aeral.</p></div>
+      <div class="tl-item reveal d2"><div class="tl-dot">03</div><h3>Ejecución</h3><p>Limpieza sección por sección, con supervisión permanente desde tierra.</p></div>
+      <div class="tl-item reveal d3"><div class="tl-dot">04</div><h3>Reporte y mantenimiento</h3><p>Registro antes/después y plan de frecuencia para conservar el resultado.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SUSTENTABILIDAD ============ -->
+<section class="section" id="sustentabilidad">
+  <div class="container">
+    <div class="sust reveal">
+      <div>
+        <p class="eyebrow" style="color:#0e8c94">Sustentabilidad</p>
+        <h2>Limpiar en altura sin dejar huella abajo</h2>
+        <p class="lead">La aplicación dirigida del agua y la ausencia de estructuras desechables hacen del sistema una alternativa más responsable que los métodos tradicionales.</p>
+      </div>
+      <ul>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Aplicación de agua dirigida y controlada por presión, sin desperdicio por escurrimiento masivo</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Detergentes biodegradables seleccionados según el material de la fachada</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Sin plásticos, mallas ni estructuras temporales que terminan en desecho</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALERÍA ============ -->
+<section class="section alt" id="galeria">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow">Galería</p>
+      <h2>La operación en imágenes</h2>
+    </div>
+    <div class="gallery-grid">
+      <div class="media wide reveal">
+        <video autoplay muted loop playsinline preload="metadata" poster="assets/demo_poster.jpg" aria-label="Video del dron de Aeral limpiando la fachada de cristal de una torre">
+          <source src="assets/demo.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="media two reveal d1">
+        <img src="assets/dron.jpg" alt="Dron de limpieza de Aeral trabajando en la parte alta de un edificio" loading="lazy">
+        <div class="cap">Trabajo en gran altura, sin andamios</div>
+      </div>
+      <div class="media one reveal d2">
+        <img src="assets/dron3.jpg" alt="Acercamiento del dron de Aeral aplicando agua a presión sobre la fachada" loading="lazy">
+        <div class="cap">Aplicación de precisión</div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ============ FAQ ============ -->
+<section class="section" id="faq">
+  <div class="container">
+    <div class="section-head reveal">
+      <h2>Preguntas frecuentes</h2>
+    </div>
+    <div class="faq-list reveal">
+      <details class="faq-item"><summary>¿Qué tipo de edificios y materiales pueden limpiar?<span class="plus">+</span></summary><div class="answer">Fachadas de cristal, aluminio, concreto, piedra, paneles compuestos y estructuras metálicas. En la visita técnica evaluamos el material y definimos la presión y el detergente adecuados para cada superficie.</div></details>
+      <details class="faq-item"><summary>¿Qué altura máxima alcanza el sistema?<span class="plus">+</span></summary><div class="answer">El sistema está diseñado para edificios de gran altura, precisamente donde los andamios se vuelven inviables y los columpios extremadamente lentos. La altura operativa exacta depende de la configuración del edificio y las condiciones del sitio; se confirma en la visita técnica.</div></details>
+      <details class="faq-item"><summary>¿Qué pasa si hace viento?<span class="plus">+</span></summary><div class="answer">Operamos dentro de límites de viento definidos por protocolo. Si las condiciones exceden esos límites, la operación se pausa o reprograma sin costo adicional. La seguridad no se negocia.</div></details>
+      <details class="faq-item"><summary>¿Qué agua y productos utilizan?<span class="plus">+</span></summary><div class="answer">Agua suministrada de forma continua desde la bomba en tierra. Los productos de limpieza que utilizamos son seguros para las fachadas y para el entorno.</div></details>
+      <details class="faq-item"><summary>¿Qué tan seguro es para el edificio y las personas?<span class="plus">+</span></summary><div class="answer">La operación la dirige un piloto certificado desde tierra, con perímetro de seguridad delimitado y la aeronave conectada físicamente por la manguera de suministro. Además, contamos con seguro de responsabilidad civil profesional.</div></details>
+      <details class="faq-item"><summary>¿Requieren permisos para volar?<span class="plus">+</span></summary><div class="answer">Sí. La operación se realiza conforme a la normatividad aeronáutica mexicana (NOM-107-SCT3-2019), con aeronave registrada y pilotos autorizados ante la AFAC. Aeral gestiona todo el proceso; el cliente no tiene que tramitar nada.</div></details>
+      <details class="faq-item"><summary>¿Cuánto tarda la limpieza de un edificio?<span class="plus">+</span></summary><div class="answer">Con un avance de hasta 800 m² por hora, una torre de tamaño medio se limpia en días, no en semanas. El tiempo exacto depende de la superficie total, el material y el nivel de suciedad, y se especifica en la cotización.</div></details>
+      <details class="faq-item"><summary>¿Interrumpe la operación del edificio?<span class="plus">+</span></summary><div class="answer">Mínimamente. No se instalan andamios ni se bloquean accesos; solo se delimita un perímetro de seguridad en la zona de trabajo. Podemos programar horarios de menor afluencia si el inmueble lo requiere.</div></details>
+      <details class="faq-item"><summary>¿Qué pasa si llueve el día programado?<span class="plus">+</span></summary><div class="answer">La operación se reprograma sin costo. Al no haber montaje de estructuras, mover la fecha no genera gastos de desmontaje ni penalizaciones logísticas.</div></details>
+      <details class="faq-item"><summary>¿La limpieza deja marcas en los cristales?<span class="plus">+</span></summary><div class="answer">El protocolo incluye un enjuague final con agua tratada y presión controlada para lograr un acabado uniforme. En la visita técnica se define el tratamiento según el tipo de cristal y el nivel de mineralización del agua local.</div></details>
+      <details class="faq-item"><summary>¿Cuentan con seguro?<span class="plus">+</span></summary><div class="answer">Sí, seguro de responsabilidad civil profesional que cubre la operación. Los detalles de cobertura se incluyen en la propuesta formal.</div></details>
+      <details class="faq-item"><summary>¿Cómo se cotiza el servicio?<span class="plus">+</span></summary><div class="answer">Por metro cuadrado, considerando material, altura, accesos y estado de la fachada. El primer paso es una visita técnica sin costo; después recibe una propuesta formal con alcance, tiempos y precio cerrado.</div></details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA FINAL ============ -->
+<section class="section cta-final" id="contacto">
+  <div class="container">
+    <div class="cta-grid">
+      <div class="reveal">
+        <p class="eyebrow">Cotización</p>
+        <h2>Su fachada, limpia en días. Empecemos con una visita técnica sin costo.</h2>
+        <p class="lead">Cuéntenos sobre su inmueble y le responderemos con los siguientes pasos en menos de 24 horas hábiles.</p>
+        <div class="cta-contacts">
+          <a class="contact-line" href="https://wa.me/525549226577?text=Hola%2C%20me%20interesa%20una%20cotizaci%C3%B3n%20de%20limpieza%20de%20fachada%20con%20Aeral." target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            WhatsApp&nbsp;<strong>(55) 4922 6577</strong>
+          </a>
+          <a class="contact-line" href="https://wa.me/525567075883?text=Hola%2C%20me%20interesa%20una%20cotizaci%C3%B3n%20de%20limpieza%20de%20fachada%20con%20Aeral." target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            WhatsApp&nbsp;<strong>(55) 6707 5883</strong>
+          </a>
+          <a class="contact-line" href="mailto:aeralmx@gmail.com">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+            aeralmx@gmail.com
+          </a>
+        </div>
+      </div>
+      <div class="form-card reveal d1">
+        <h3>Solicitar cotización</h3>
+        <p class="hint">Complete el formulario y su solicitud se enviará directamente por WhatsApp.</p>
+        <div class="field"><label for="f-nombre">Nombre</label><input id="f-nombre" type="text" autocomplete="name" placeholder="Su nombre completo"></div>
+        <div class="form-row">
+          <div class="field"><label for="f-empresa">Empresa o inmueble</label><input id="f-empresa" type="text" autocomplete="organization" placeholder="Nombre de la empresa"></div>
+          <div class="field"><label for="f-tipo">Tipo de inmueble</label>
+            <select id="f-tipo">
+              <option>Torre de oficinas</option><option>Hotel</option><option>Hospital</option><option>Centro comercial</option><option>Condominio</option><option>Corporativo</option><option>Parque industrial</option><option>Otro</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field"><label for="f-correo">Correo</label><input id="f-correo" type="email" autocomplete="email" placeholder="correo@empresa.com"></div>
+          <div class="field"><label for="f-telefono">Teléfono</label><input id="f-telefono" type="tel" autocomplete="tel" placeholder="(55) 0000 0000"></div>
+        </div>
+        <div class="field"><label for="f-mensaje">Mensaje</label><textarea id="f-mensaje" placeholder="Cuéntenos sobre el edificio: ubicación, altura aproximada, material de la fachada…"></textarea></div>
+        <button class="btn btn-primary" id="sendForm" style="width:100%;justify-content:center">Solicitar cotización
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+        <p class="form-note">Al enviar, acepta nuestro aviso de privacidad. Sus datos solo se utilizan para responder a su solicitud.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="#" class="logo" aria-label="Aeral — inicio" style="margin-bottom:16px">
+          <img src="assets/logo_white.png" alt="Aeral">
+        </a>
+        <p style="max-width:320px">Limpieza profesional de fachadas mediante drones industriales. Ciudad de México.</p>
+      </div>
+      <div>
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="#por-que">Por qué Aeral</a></li>
+          <li><a href="#beneficios">Beneficios</a></li>
+          <li><a href="#industrias">Industrias</a></li>
+          <li><a href="#galeria">Galería</a></li>
+          <li><a href="#faq">Preguntas frecuentes</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="https://wa.me/525549226577" target="_blank" rel="noopener">WhatsApp (55) 4922 6577</a></li>
+          <li><a href="https://wa.me/525567075883" target="_blank" rel="noopener">WhatsApp (55) 6707 5883</a></li>
+          <li><a href="mailto:aeralmx@gmail.com">aeralmx@gmail.com</a></li>
+          <li><a href="/aviso-de-privacidad">Aviso de privacidad</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year">2026</span> Aeral. Todos los derechos reservados.</span>
+      <span>Operación conforme a NOM-107-SCT3-2019 · Pilotos autorizados AFAC</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ---- Nav: fondo al hacer scroll ----
+const nav = document.getElementById('nav');
+const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 24);
+window.addEventListener('scroll', onScroll, {passive:true});
+onScroll();
+
+// ---- Menú móvil ----
+const toggle = document.getElementById('navToggle');
+const links = document.getElementById('navLinks');
+toggle.addEventListener('click', () => {
+  const open = links.classList.toggle('open');
+  toggle.setAttribute('aria-expanded', open);
+});
+links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  links.classList.remove('open');
+  toggle.setAttribute('aria-expanded', 'false');
+}));
+
+// ---- Scroll reveal ----
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, {threshold: 0.12, rootMargin: '0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ---- Formulario → WhatsApp ----
+document.getElementById('sendForm').addEventListener('click', () => {
+  const v = id => document.getElementById(id).value.trim();
+  const nombre = v('f-nombre'), empresa = v('f-empresa'), tipo = v('f-tipo'),
+        correo = v('f-correo'), tel = v('f-telefono'), msg = v('f-mensaje');
+  if (!nombre || !correo) { alert('Por favor complete al menos su nombre y correo.'); return; }
+  const texto = `Hola, me interesa una cotización de Aeral.%0A%0A` +
+    `*Nombre:* ${encodeURIComponent(nombre)}%0A` +
+    `*Empresa/Inmueble:* ${encodeURIComponent(empresa || '—')}%0A` +
+    `*Tipo:* ${encodeURIComponent(tipo)}%0A` +
+    `*Correo:* ${encodeURIComponent(correo)}%0A` +
+    `*Teléfono:* ${encodeURIComponent(tel || '—')}%0A` +
+    `*Mensaje:* ${encodeURIComponent(msg || '—')}`;
+  window.open(`https://wa.me/525549226577?text=${texto}`, '_blank');
+});
+
+// ---- Año dinámico ----
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
