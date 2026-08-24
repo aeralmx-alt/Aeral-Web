@@ -1,0 +1,23 @@
+{
+  "name": "primary",
+  "version": "1.0.0",
+  "description": "Landing page de Aeral: limpieza profesional de fachadas mediante drones. Es **un solo archivo** (`index.html`) con todo incluido: textos, estilos, fotos, video y logos. No necesita build, ni servidor, ni carpeta de imágenes. Se abre y funciona en cualquier lado.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aeralmx-alt/Aeral-Web.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aeralmx-alt/Aeral-Web/issues"
+  },
+  "homepage": "https://github.com/aeralmx-alt/Aeral-Web#readme",
+  "dependencies": {
+    "@vercel/analytics": "^2.0.1"
+  }
+}
